@@ -36,26 +36,15 @@ div span {
 	margin : 30px;
 }
 
-#kakaologin {
-	background-color: #FEE500;
-	height : 48px;
-	border-radius: 12px;
+#idempty {
+    margin : 0px;
+    color : red;
 }
 
-#naverlogin {
-	background-color: rgb(3,199,90);
-	height : 48px;
-	border-radius: 12px;
+#pwempty {
+    margin : 0px;
+    color : red;
 }
-
-#kakaologin:hover {
-	cursor: pointer;
-}
-
-#naverlogin:hover {
-	cursor: pointer;
-}
-
 .d-grid{
 	margin : 10px;
 }
