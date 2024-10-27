@@ -14,12 +14,11 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Member {
+public class User {
     @Id
-    private int membernum;
+    private int no;
 
-    private String memberid, memberpw, membername, birth, phone, email, nickname, address;
-    private boolean memberout;
-    private Date regdate;
+    private String userid, userpw, nick, addr, addr2, email, phone;
+    private int point;
 
 }
