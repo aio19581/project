@@ -1,0 +1,62 @@
+@charset "UTF-8";
+body{
+	font-family : sans-serif;
+	user-select: none;
+}
+
+div a {
+	text-decoration: none;
+	color : black;
+}
+div a:hover{
+	color : rgb(0, 128, 255);
+}
+
+div img {
+	height : 100%; 
+	border-radius: 0.5rem;
+}
+div span {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font : #000000 85%;
+	font-weight: bold;
+}
+
+#content {
+	max-width : 330px;
+	margin : 10% auto;
+}
+
+#title {
+	font-size: 2.5em;
+	font-weight: bold;
+	text-align : center;
+	margin : 30px;
+}
+
+#kakaologin {
+	background-color: #FEE500;
+	height : 48px;
+	border-radius: 12px;
+}
+
+#naverlogin {
+	background-color: rgb(3,199,90);
+	height : 48px;
+	border-radius: 12px;
+}
+
+#kakaologin:hover {
+	cursor: pointer;
+}
+
+#naverlogin:hover {
+	cursor: pointer;
+}
+
+.d-grid{
+	margin : 10px;
+}
+
