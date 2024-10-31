@@ -1,15 +1,12 @@
-package com.example.project.controller;
+package com.example.project.login.controller;
 
-import com.example.project.model.UserDao;
+import com.example.project.login.model.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import java.util.List;
 
 @Controller
 public class loginController {
@@ -18,7 +15,7 @@ public class loginController {
 
     @GetMapping("/")
     public String mainPage(){
-        return "index";
+        return "main";
     }
 
     @GetMapping("login")
@@ -27,21 +24,25 @@ public class loginController {
     }
 
     @PostMapping("login")
-    @ResponseBody
-    public void memberCheck(@RequestParam("userid") String userId,
+    public String userCheck(@RequestParam("userid") String userId,
                             @RequestParam("userpw") String userPw,
                             Model model){
         try {
-            String pass = dao.getPass(userId).getUserpw();
+            String pass = dao.getPass(userId);
             if (userPw.equals(pass)){
                 model.addAttribute("msg","로그인성공");
-                System.out.println(model.getAttribute("msg"));
+                System.out.println("로그인성공");
+                return "main";
             } else {
                 model.addAttribute("msg","비밀번호 오류");
-                System.out.println(model.getAttribute("msg"));
+                return "login";
             }
         } catch (Exception e){
             System.out.println("아이디가 없습니다.");
+            return "login";
         }
     }
+
+    @GetMapping("join")
+    public String joinPage(){ return "join"; }
 }

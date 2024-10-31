@@ -1,0 +1,50 @@
+@charset "UTF-8";
+body{
+	font-family : sans-serif;
+}
+
+label {
+	font-weight: bold;
+	margin-top : 10px;
+}
+
+input {
+	width : 100%;
+	outline : none;
+	border : none;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance:none;
+  margin: 0;
+}
+
+#content {
+	max-width : 350px;
+	margin : 10% auto;
+}
+
+#memberId, #nickName{
+	width : 75%;
+	outline : none;
+	border : none;
+}
+
+#address {
+	width : 25%;
+}
+
+.d-flex {
+	padding : 3px 3px 3px 10px;
+	border:1px solid rgb(192, 192, 192);
+	border-radius:3px;
+	height : 40px;
+}
+.d-grid{
+	margin-top : 20px;
+}
+
+.form-select {
+	width : 80%;
+	margin-left : 3px;
+}
