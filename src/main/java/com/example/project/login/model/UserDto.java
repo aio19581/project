@@ -28,7 +28,6 @@ public class UserDto {
                 .email(user.getEmail())
                 .phone(user.getPhone())
                 .point(user.getPoint())
-                .regdate(user.getRegdate())
                 .build();
     }
 
@@ -44,7 +43,6 @@ public class UserDto {
                 .email(dto.getEmail())
                 .phone(dto.getPhone())
                 .point(dto.getPoint())
-                .regdate(dto.getRegdate())
                 .build();
     }
 }

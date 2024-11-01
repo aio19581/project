@@ -7,6 +7,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 public class loginController {
@@ -23,7 +27,24 @@ public class loginController {
         return "login";
     }
 
-    @PostMapping("login")
+    @GetMapping("loginsubmit")
+    @ResponseBody
+    public Map<String, String> userCheck(@RequestParam("userid") String userId,
+                                        @RequestParam("userpw") String userPw){
+        Map<String, String> data = new HashMap<String, String>();
+
+        if(dao.checkId(userId)){
+            if(dao.getPass(userId).equals(userPw)){
+                data.put("msg","success");
+            } else {
+                data.put("msg","pw fail");
+            }
+        } else {
+            data.put("msg","id fail");
+        }
+        return data;
+    }
+    /*
     public String userCheck(@RequestParam("userid") String userId,
                             @RequestParam("userpw") String userPw,
                             Model model){
@@ -42,6 +63,7 @@ public class loginController {
             return "login";
         }
     }
+    */
 
     @GetMapping("join")
     public String joinPage(){ return "join"; }

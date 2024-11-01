@@ -25,5 +25,4 @@ public class User {
     private String email;
     private String phone;
     private int point;
-    private Date regdate;
 }
