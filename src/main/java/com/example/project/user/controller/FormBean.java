@@ -1,4 +1,4 @@
-package com.example.project.login.controller;
+package com.example.project.user.controller;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,4 +1,4 @@
-package com.example.project.login.model;
+package com.example.project.user.model;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
