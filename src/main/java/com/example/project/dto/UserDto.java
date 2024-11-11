@@ -1,5 +1,6 @@
-package com.example.project.user.model;
+package com.example.project.dto;
 
+import com.example.project.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -12,13 +13,13 @@ import java.util.Date;
 @AllArgsConstructor
 @Builder
 public class UserDto {
-    private int no, point;
+    private int userno, point;
     private String userid, userpw, name, nick, addr, addr2, email, phone;
     private Date regdate;
 
     public static UserDto fromEntity(User user){
         return UserDto.builder()
-                .no(user.getNo())
+                .userno(user.getUserno())
                 .userid(user.getUserid())
                 .userpw(user.getUserpw())
                 .name(user.getName())
@@ -33,7 +34,7 @@ public class UserDto {
 
     public static User toEntity(UserDto dto){
         return User.builder()
-                .no(dto.getNo())
+                .userno(dto.getUserno())
                 .userid(dto.getUserid())
                 .userpw(dto.getUserpw())
                 .name(dto.getName())

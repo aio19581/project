@@ -1,4 +1,4 @@
-package com.example.project.store.model;
+package com.example.project.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,7 +10,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class StoreDto {
-    private String storeName;
-    private long lon;
-    private long lat;
+    private int storeno;
+    private String title;
+    private String cont;
+    private String addr;
+    private String tel;
 }
