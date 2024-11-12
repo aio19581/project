@@ -18,7 +18,7 @@ public class Usercupon {
 
     @JoinColumn(name="fk_user_no")
     @ManyToOne(fetch = FetchType.EAGER)
-    private User user;
+    private Userinfo userinfo;
 
     @JoinColumn(name="fk_cupon_no")
     @ManyToOne(fetch = FetchType.EAGER)

@@ -15,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class User {
+public class Userinfo {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int userno;
@@ -26,14 +26,15 @@ public class User {
     private String phone;
     private int point;
     private LocalDateTime regdate;
+    private String roles;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "userinfo")
     private List<BookMark> bookMarks;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "userinfo")
     private List<Review> reviews;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "userinfo")
     private List<Usercupon> usercupons;
 
 }

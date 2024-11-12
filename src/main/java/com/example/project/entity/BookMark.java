@@ -16,7 +16,7 @@ public class BookMark {
 
     @JoinColumn(name = "fk_user_no")
     @ManyToOne
-    private User user;
+    private Userinfo userinfo;
 
     @JoinColumn(name="fk_store_no")
     @ManyToOne

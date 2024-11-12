@@ -43,8 +43,9 @@ dependencies {
 	testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:3.0.3'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
-
+	implementation 'org.springframework.security:spring-security-crypto:5.5.0'
 	implementation 'com.google.code.gson:gson:2.8.6'
+	implementation group: 'commons-codec', name: 'commons-codec', version: '1.9'
 	implementation 'org.jsoup:jsoup:1.13.1'
 }
 

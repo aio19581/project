@@ -26,6 +26,6 @@ public class Review {
 
     @JoinColumn(name="fk_user_no")
     @ManyToOne(fetch = FetchType.EAGER)
-    private User user;
+    private Userinfo userinfo;
 
 }

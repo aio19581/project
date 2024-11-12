@@ -1,6 +1,6 @@
 package com.example.project.dto;
 
-import com.example.project.entity.User;
+import com.example.project.entity.Userinfo;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -17,7 +17,7 @@ public class UserDto {
     private String userid, userpw, name, nick, addr, addr2, email, phone;
     private Date regdate;
 
-    public static UserDto fromEntity(User user){
+    public static UserDto fromEntity(Userinfo user){
         return UserDto.builder()
                 .userno(user.getUserno())
                 .userid(user.getUserid())
@@ -32,8 +32,8 @@ public class UserDto {
                 .build();
     }
 
-    public static User toEntity(UserDto dto){
-        return User.builder()
+    public static Userinfo toEntity(UserDto dto){
+        return Userinfo.builder()
                 .userno(dto.getUserno())
                 .userid(dto.getUserid())
                 .userpw(dto.getUserpw())

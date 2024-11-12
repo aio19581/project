@@ -1,4 +1,4 @@
-package com.example.project.controller.user;
+package com.example.project.controller;
 
 import com.example.project.model.user.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,12 +20,13 @@ public class loginController {
         return "main";
     }
 
-    @GetMapping("login")
+    @GetMapping("/login")
     public String loginPage(){
         return "login";
     }
-
-    @GetMapping("loginsubmit")
+    
+    /*
+    @GetMapping("/loginsubmit")
     @ResponseBody
     public Map<String, String> userCheck(@RequestParam("userid") String userId,
                                         @RequestParam("userpw") String userPw){
@@ -42,7 +43,7 @@ public class loginController {
         }
         return data;
     }
-    /*
+
     public String userCheck(@RequestParam("userid") String userId,
                             @RequestParam("userpw") String userPw,
                             Model model){
