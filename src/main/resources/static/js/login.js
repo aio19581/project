@@ -1,13 +1,12 @@
 window.onload = () => {
-	const idInput = document.getElementById("userid");
-    const pwInput = document.getElementById("userpw");
+	const idInput = document.getElementById("username");
+    const pwInput = document.getElementById("password");
     idInput.addEventListener('blur', idCheck);
     pwInput.addEventListener('blur', pwCheck);
 
 }
-
 function idCheck(){
-	const id = document.getElementById("userid").value;
+	const id = document.getElementById("username").value;
 	const idempty = document.getElementById("idempty");
 	let text = '';
 	if(id==''){
@@ -19,7 +18,7 @@ function idCheck(){
 }
 
 function pwCheck(){
-	const pw = document.getElementById("userpw").value;
+	const pw = document.getElementById("password").value;
 	const pwempty = document.getElementById("pwempty");
 	let text = '';
     if(pw==''){

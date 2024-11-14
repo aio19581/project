@@ -5,7 +5,6 @@ import org.springframework.security.crypto.encrypt.AesBytesEncryptor;
 import org.springframework.stereotype.Service;
 
 import java.nio.charset.StandardCharsets;
-import java.util.Base64;
 
 @Service
 @RequiredArgsConstructor
