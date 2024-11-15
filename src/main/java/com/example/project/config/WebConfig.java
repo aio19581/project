@@ -7,12 +7,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class WebConfig implements WebMvcConfigurer{
 
-    // WebMvcConfigurer의 추상메서드를 재정의
+    // CORS 설정 ( 다른 도메인에서 오는 요청 처리 방법 설정)
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**") //모든 URL에 대해 "/ws" 연결을 허용
-                .allowedOrigins("*") //모든 도메인 허용
-                .allowedMethods("GET","POST", "PUT", "DELETE") //허용 메소드 지정
-                .allowedHeaders("*"); //모든 헤더 허용
+        registry.addMapping("/**")
+                .allowedOrigins("*")
+                .allowedMethods("GET","POST", "PUT", "DELETE")
+                .allowedHeaders("*");
     }
 }
