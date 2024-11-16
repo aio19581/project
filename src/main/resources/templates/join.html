@@ -12,68 +12,69 @@
     <!-- 로고&타이틀 -->
     <div id="header"></div>
 
+    <form th:action="@{/join}" method="post">
     <div id="content">
         <label for="userid">아이디</label>
         <div class="d-flex justify-content-between">
-            <input type="text" id="userid" aria-describedby="idcheckhelp">
+            <input type="text" id="userid" name="userid"  aria-describedby="idcheckhelp">
         </div >
         <div id="idcheckhelp" class="form-text"></div>
 
         <label for="userpw">비밀번호</label>
         <div class="d-flex align-items-center">
-        <input type="password" id="userpw" aria-describedby="passwordhelp">
-    </div >
-    <div id="passwordhelp" class="form-text">
-        문자, 숫자, 특수문자 포함 8~20자 입력해주세요
-    </div>
+        <input type="password" id="userpw" name="userpw" aria-describedby="passwordhelp">
+        </div >
+        <div id="passwordhelp" class="form-text">
+            문자, 숫자, 특수문자 포함 8~20자 입력해주세요
+        </div>
 
-    <label for="userpwcheck">비밀번호 확인</label>
-    <div class="d-flex align-items-center" >
-        <input type="password" id="userpwcheck" aria-describedby="pwcheckhelp">
-    </div >
-    <div id="pwcheckhelp" class="form-text"></div>
+        <label for="userpwcheck">비밀번호 확인</label>
+        <div class="d-flex align-items-center" >
+            <input type="password" id="userpwcheck" aria-describedby="pwcheckhelp">
+        </div >
+        <div id="pwcheckhelp" class="form-text"></div>
 
-    <label for="name">이름</label>
-    <div class="d-flex align-items-center">
-        <input type="text" id="name" >
-    </div >
+        <label for="name">이름</label>
+        <div class="d-flex align-items-center">
+            <input type="text" id="name" name="name">
+        </div >
 
-    <!--
-    <label for="birth">생년월일</label>
-    <div class="d-flex align-items-center">
-        <input type="number" id="birth" aria-describedby="birthhelp" value="">
-    </div >
-    <div id="birthhelp" class="form-text">
-        생년월일 8자리 입력해주세요
-    </div>
-    -->
-    <label for="phone">휴대전화번호</label>
-    <div class="d-flex align-items-center">
-        <input type="number" id="phone" aria-describedby="phonehelp">
-    </div >
-    <div id="phonehelp" class="form-text">
-        - 제외 11자리 입력해주세요
-    </div>
+        <!--
+        <label for="birth">생년월일</label>
+        <div class="d-flex align-items-center">
+            <input type="number" id="birth" aria-describedby="birthhelp" value="">
+        </div >
+        <div id="birthhelp" class="form-text">
+            생년월일 8자리 입력해주세요
+        </div>
+        -->
+        <label for="phone">휴대전화번호</label>
+        <div class="d-flex align-items-center">
+            <input type="number" id="phone" name="phone" aria-describedby="phonehelp">
+        </div >
+        <div id="phonehelp" class="form-text">
+            - 제외 11자리 입력해주세요
+        </div>
 
-    <label for="email">이메일</label>
-    <div class="d-flex justify-content-between">
-        <input type="text" id="email" style="border:none;"> @
-        <select class="form-select form-select-sm" >
-            <option hidden="hidden">이메일선택</option>
-            <option value="naver.com">naver.com</option>
-            <option value="daum.net">daum.net</option>
-            <option value="google.com">google.com</option>
-            <option value="kakao.com">kakao.com</option>
-        </select>
-    </div >
+        <label for="email">이메일</label>
+        <div class="d-flex justify-content-between">
+            <input type="text" id="email" name="email1" style="border:none;"> @
+            <select class="form-select form-select-sm" name="email2">
+                <option hidden="hidden">이메일선택</option>
+                <option value="naver.com">naver.com</option>
+                <option value="daum.net">daum.net</option>
+                <option value="google.com">google.com</option>
+                <option value="kakao.com">kakao.com</option>
+            </select>
+        </div >
 
-    <label for="nickname">닉네임</label>
-    <div class="d-flex justify-content-between">
-        <input type="text" id="nickname" aria-describedby="nickcheckhelp">
-    </div >
-    <div id="nickcheckhelp" class="form-text"></div>
+        <label for="nickname">닉네임</label>
+        <div class="d-flex justify-content-between">
+            <input type="text" id="nickname" name="nickname" aria-describedby="nickcheckhelp">
+        </div >
+        <div id="nickcheckhelp" class="form-text"></div>
 
-    <form name="form" id="form" method="post">
+
         <label for="address">주소</label>
         <div class="d-flex justify-content-between">
             <input type="hidden" id="confmKey" name="confmKey" value=""  >
@@ -81,18 +82,19 @@
             <input type="button" class="btn btn-outline-primary btn-sm"  id="address" value="주소검색">
         </div>
         <div class="d-flex align-items-center">
-            <input type="text" id="roadAddrPart1" readonly="readonly"  placeholder="주소" >
+            <input type="text" id="roadAddrPart1" name="roadAddrPart1" readonly="readonly"  placeholder="주소" >
         </div >
         <div class="d-flex justify-content-start">
-            <input type="text" id="addrDetail" value="" readonly="readonly"  placeholder="상세주소" style="width:40%;" >
-            <input type="text" id="roadAddrPart2" value="" readonly="readonly"  >
+            <input type="text" id="addrDetail" name="addrDetail" value="" readonly="readonly"  placeholder="상세주소" style="width:40%;" >
+            <input type="text" id="roadAddrPart2" name="roadAddrPart2" value="" readonly="readonly"  >
         </div>
-    </form>
-    <div class="d-grid mx-auto" >
-        <button type="button" class="btn btn-primary btn-lg" id="join">회원가입</button>
-    </div>
 
-</div>
+        <div class="d-grid mx-auto" >
+            <button type="submit" class="btn btn-primary btn-lg" id="join">회원가입</button>
+        </div>
+    </div>
+    </form>
+
 
 <!-- 푸터 -->
 <div id="footer"></div>

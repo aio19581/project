@@ -36,9 +36,6 @@ public class CustomUserDetailService implements UserDetailsService {
         List<GrantedAuthority> roles = new ArrayList<>();
         roles.add(new SimpleGrantedAuthority("USER"));
 
-        //JOIN 설정 전까지만 사용할 코드
-        String pw = pwEncoder.encode(user.getUserpw());
-
-        return new User(user.getUserid(),pw,roles);
+        return new User(user.getUserid(),user.getUserpw(),roles);
     }
 }

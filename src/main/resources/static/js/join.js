@@ -106,13 +106,21 @@ function regexCheck(){
 
 // 주소 검색
 function goPopup(){
-const pop = window.open("/join/popup","pop","width=570,height=420, scrollbars=yes, resizable=yes");
+    const pop = window.open("/join/popup","pop","width=570,height=420, scrollbars=yes, resizable=yes");
 }
 
 function jusoCallBack(roadAddrPart1,addrDetail,zipNo,roadAddrPart2){
+    document.querySelector("#roadAddrPart1").value = roadAddrPart1;
+    document.querySelector("#addrDetail").value = addrDetail;
+    document.querySelector("#zipNo").value = zipNo;
+    document.querySelector("#roadAddrPart2").value = roadAddrPart2;
+
+}
+/*
 document.form.roadAddrPart1.value = roadAddrPart1;
 document.form.addrDetail.value = addrDetail;
 document.form.zipNo.value = zipNo;
 document.form.roadAddrPart2.value = roadAddrPart2;
-}
+*/
+
 

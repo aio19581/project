@@ -1,13 +1,11 @@
-package com.example.project.controller;
+package com.example.project.controller.user;
 
 import com.example.project.model.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,18 +24,12 @@ public class JoinController {
     }
 
     @PostMapping("/join")
-    @ResponseBody
-    public Map<String, Object> joinPage2(String roadAddrPart1, String roadAddrPart2, String zipNo, String inputYn){
-        Map<String,Object> map = new HashMap<String, Object>();
-        List list = new ArrayList();
-        Map<String,String> data = new HashMap<String,String>();
-        data.put("roadAddrPart1",roadAddrPart1);
-        data.put("roadAddrPart2",roadAddrPart2);
-        data.put("zipNo",zipNo);
-        list.add(data);
-        map.put("addr",list);
+    public String join(UserBean bean){
+        System.out.println(bean.getName());
+        System.out.println(bean.getUserid());
+        service.joinUser(bean);
 
-        return map;
+        return "main";
     }
 
     @GetMapping("/join/duplicate/{data}/{type}")
