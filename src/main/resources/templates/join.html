@@ -69,9 +69,9 @@
 
     <label for="nickname">닉네임</label>
     <div class="d-flex justify-content-between">
-        <input type="text" id="nickname" >
-        <button type="submit" class="btn btn-outline-primary btn-sm">중복확인</button>
+        <input type="text" id="nickname" aria-describedby="nickcheckhelp">
     </div >
+    <div id="nickcheckhelp" class="form-text"></div>
 
     <form name="form" id="form" method="post">
         <label for="address">주소</label>

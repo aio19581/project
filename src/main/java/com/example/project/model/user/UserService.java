@@ -9,8 +9,12 @@ public class UserService {
     private UserRepository repo;
 
     //등록된 id 확인용
-    public boolean duplicateCheck(String id){
+    public boolean duplicateIdCheck(String id){
         return (repo.findByuserid(id) != null);
     }
 
+    //등록된 nick 확인용
+    public boolean duplicateNickCheck(String nick){
+        return (repo.findBynick(nick) != null);
+    }
 }

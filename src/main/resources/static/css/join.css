@@ -24,11 +24,7 @@ input::-webkit-inner-spin-button {
 	margin : 10% auto;
 }
 
-#userid, #nickname{
-	width : 75%;
-	outline : none;
-	border : none;
-}
+
 
 #address {
 	width : 25%;

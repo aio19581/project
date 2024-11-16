@@ -1,29 +1,21 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Title</title>
+    <script type="text/javascript" src="/js/popup.js"></script>
 </head>
-<script >
-    function init(){
-        var url = location.href;
-        var confmKey = "U01TX0FVVEgyMDI0MDkxNzIzNTIyMDExNTA4OTg=";
-        var resultType = "4";
-        var inputYn= "";
-        if(inputYn != "Y"){
-            document.form.confmKey.value = confmKey;
-            document.form.returnUrl.value = url;
-            document.form.resultType.value = resultType;
-            document.form.action="https://business.juso.go.kr/addrlink/addrLinkUrl.do";
-            document.form.submit();
-        }else{
-            opener.jusoCallBack();
-            window.close();
-        }
-    }
-</script>
-<body onload="init();">
 <form id="form" name="form" method="post">
+    <input type="hidden" id="inputYn" name="inputYn" th:value="${inputYn}"/>
+
+    <th:block th:if="${zipNo}">
+        <input type="hidden" id="roadAddrPart1" name="roadAddrPart1" th:value="${roadAddrPart1}"/>
+        <input type="hidden" id="roadAddrPart2" name="roadAddrPart2" th:value="${roadAddrPart2}"/>
+        <input type="hidden" id="addrDetail" name="addrDetail" th:value="${addrDetail}"/>
+        <input type="hidden" id="zipNo" name="zipNo" th:value="${zipNo}"/>
+    </th:block>
+
     <input type="hidden" id="confmKey" name="confmKey" value=""/>
     <input type="hidden" id="returnUrl" name="returnUrl" value=""/>
     <input type="hidden" id="resultType" name="resultType" value=""/>
