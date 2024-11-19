@@ -21,9 +21,6 @@ public class Category {
     private String field; //카테고리명
 
     @OneToMany(mappedBy = "category")
-    private List<Cupon> cupons;
-
-    @OneToMany(mappedBy = "category")
     private List<Store> stores;
 
 

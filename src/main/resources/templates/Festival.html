@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+보기
+<script>
+  fetch('http://api.kcisa.kr/openapi/service/rest/meta4/getKCPG0504?serviceKey=7084f8fd-38f7-4276-a006-68fd687b765e&numOfRows=10&pageNo=1',{method:"get", param:{"openApiId":"7084f8fd-38f7-4276-a006-68fd687b765e"}})
+  .then(response => {
+    return response.json();
+  })
+  .then(data => {
+    console.log(data);
+  })
+  .catch();
+</script>
+</body>
+</html>

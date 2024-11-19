@@ -27,7 +27,5 @@ public class Store {
     @OneToMany(mappedBy = "store")
     private List<BookMark> bookMarks;
 
-    @OneToMany(mappedBy = "store")
-    private List<Review> reviews;
 
 }

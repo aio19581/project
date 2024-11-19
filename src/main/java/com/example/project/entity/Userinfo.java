@@ -31,11 +31,6 @@ public class Userinfo {
     @OneToMany(mappedBy = "userinfo")
     private List<BookMark> bookMarks;
 
-    @OneToMany(mappedBy = "userinfo")
-    private List<Review> reviews;
-
-    @OneToMany(mappedBy = "userinfo")
-    private List<Usercupon> usercupons;
 
     @PrePersist
     public void setData(){
