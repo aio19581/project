@@ -24,6 +24,11 @@ public class UserService {
         return (repo.findBynick(nick) != null);
     }
 
+    //주소
+    public String getAddr(String id){
+        return repo.findByuserid(id).getAddr();
+    }
+
     //회원가입
     public void joinUser(UserBean bean){
 

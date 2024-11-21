@@ -7,6 +7,11 @@
     <script type="text/javascript" src="/js/map.js" ></script>
 </head>
 <body>
+<span id="addr" th:text="${addr}">
+
+</span>
+<input type="text" id="search" placeholder="주소 검색" />
+<input type="button" id="searchbtn" value="검색" />
 <!-- 지도를 표시할 div -->
 <div id="map" style="width:100%;height:350px;"></div>
 

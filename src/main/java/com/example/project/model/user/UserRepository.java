@@ -5,7 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<Userinfo,Integer> {
 
-    //비밀번호 확인용
     Userinfo findByuserid(String id);
     Userinfo findBynick(String nick);
 }

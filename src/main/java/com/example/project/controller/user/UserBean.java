@@ -18,8 +18,8 @@ public class UserBean {
                 .userpw(bean.getUserpw())
                 .name(bean.getName())
                 .nick(bean.getNickname())
-                .addr(bean.getZipNo())
-                .addr2(bean.getRoadAddrPart1()+" "+bean.getRoadAddrPart2()+" "+bean.getAddrDetail())
+                .addr(bean.getRoadAddrPart1()+" "+bean.getRoadAddrPart2())
+                .addr2(bean.getAddrDetail())
                 .email(bean.getEmail1()+"@"+bean.getEmail2())
                 .phone(bean.getPhone())
                 .build();
