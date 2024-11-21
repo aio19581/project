@@ -10,4 +10,9 @@ public class MapController {
     public String mapPage(){
         return "map";
     }
+
+    @GetMapping("map2")
+    public String map2Page(){
+        return "map2";
+    }
 }

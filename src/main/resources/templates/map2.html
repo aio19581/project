@@ -7,8 +7,15 @@
 <script>
   window.onload = () => {
     fetch('http://openapi.seoul.go.kr:8088/62525a664d61696f353457754f6252/json/ListPublicReservationSport/1/5/',{method:"get"})
-    .then()
-    .then()
+    .then(res => {
+        return res.json();
+    })
+    .then(data => {
+        data.ListPublicReservationSport.row.forEach((spot)=>{
+        console.log(spot.X);
+        console.log(spot.Y);
+        });
+    })
     .catch();
   }
   //http://openapi.seoul.go.kr:8088/62525a664d61696f353457754f6252/json/ListPublicReservationSport/1/5/
