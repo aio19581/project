@@ -1,21 +1,24 @@
+// api 서비스 키
+const key = "Pc2ps9cE4EzIcOd5hEDbI%2F5rrnOCNO%2BEBSIHKhrLj%2F2yRb4WdJc%2B5cSGMHzaYk2jJxaIJia6sL64RPxr5UeACA%3D%3D";
+// 카카오 지도 맵
+let map = "";
+
 window.onload = () => {
 
-    //지도 생성할 div
+    //지도 생성할 태그
     const mapContainer = document.getElementById('map');
-    //주소로 x,y좌표 찾기
+    //주소로 x,y좌표 찾는 함수
     let geocoder = new kakao.maps.services.Geocoder();
 
     //DB에 저장된 사용자 주소
     const addr = document.querySelector("#addr").innerHTML;
-    //검색어
-    let search = "";
-    //맵
-    let map;
+    const data = addr.split(" ");
+
     //검색 버튼
     const searchbtn = document.querySelector("#searchbtn");
 
     //페이지 진입 시 사용자 주소 중심 지도 생성
-    geocoder.addressSearch(addr, (result,status) => {
+    geocoder.addressSearch(addr, (result, status) => {
         if (status === kakao.maps.services.Status.OK) {
             let mapOption = {
                 center: new kakao.maps.LatLng(result[0].y, result[0].x),
@@ -23,45 +26,51 @@ window.onload = () => {
             };
             map = new kakao.maps.Map(mapContainer, mapOption);
         } else {
-            console.error(status);
+            console.log("지도 로딩 에러");
         }
     });
+    searchData(data[0],data[1]);
 
     //검색버튼 클릭 시 검색된 주소 중심으로 지도 변경
     searchbtn.addEventListener("click", () => {
-       search = document.querySelector("#search").value;
-       geocoder.addressSearch(search, function(result, status) {
+       const cp_nm = document.querySelector("#cp_nm").value;
+       const cpb_nm = document.querySelector("#cpb_nm").value;
+
+       geocoder.addressSearch(cp_nm+" "+cpb_nm, function(result, status) {
            if (status === kakao.maps.services.Status.OK) {
                map.setCenter(new kakao.maps.LatLng(result[0].y, result[0].x));
+               searchData(cp_nm, cpb_nm)
            }
        })
     });
-    let key = "Pc2ps9cE4EzIcOd5hEDbI%2F5rrnOCNO%2BEBSIHKhrLj%2F2yRb4WdJc%2B5cSGMHzaYk2jJxaIJia6sL64RPxr5UeACA%3D%3D";
-    let myaddress = addr.split(" ");
+}
 
-    fetch(`https://apis.data.go.kr/B551014/SRVC_API_SFMS_FACI/TODZ_API_SFMS_FACI?serviceKey=${key}&cp_nm=서울&cpb_nm=강남구&resultType=json&pageNo=1&numOfRows=100`)
-   .then(res => {
-       return res.json();
-   })
-   .then(data => {
-       data.response.body.items.item.forEach((item) => {
-            if(item.faci_stat_nm !== "폐업"){
-               let coords = new kakao.maps.LatLng(item.faci_lat,item.faci_lot);
-               let marker = new kakao.maps.Marker({
-                   map: map,
-                   position: coords
-               });
-               marker.setMap(map);
-               let iwContent = `<div>${item.faci_nm}<br/>${item.faci_tel_no}</div>`;
-               let iwRemoveable = true;
+function searchData(cp_nm, cpb_nm) {
+    fetch(`https://apis.data.go.kr/B551014/SRVC_API_SFMS_FACI/TODZ_API_SFMS_FACI?serviceKey=${key}&cp_nm=${cp_nm}&cpb_nm=${cpb_nm}&resultType=json&pageNo=1&numOfRows=100`)
+    .then(res => {
+      return res.json();
+    })
+    .then(data => {
+        data.response.body.items.item.forEach((item) => {
+           if(item.faci_stat_nm !== "폐업"){
+              let coords = new kakao.maps.LatLng(item.faci_lat,item.faci_lot);
+
+              let marker = new kakao.maps.Marker({
+                  map: map,
+                  position: coords
+              });
+
+              marker.setMap(map);
+              let iwContent = `<div>${item.faci_nm}<br/>${item.faci_tel_no}</div>`;
+              let iwRemoveable = true;
               let infowindow = new kakao.maps.InfoWindow({content:iwContent, removable : iwRemoveable});
               kakao.maps.event.addListener(marker, 'click', function() {
                   infowindow.open(map,marker);
               });
-            }
-       });
-   })
-   .catch((err)=>console.log(err));
+           }
+        });
+    })
+    .catch((err)=>console.log(err));
 }
 
 function categoryChange(e) {
@@ -81,39 +90,40 @@ function categoryChange(e) {
       const jeonnam = ["광양시","나주시","목포시","순천시","여수시","강진군","고흥군","곡성군","구례군","담양군","무안군","보성군","신안군","영광군","영암군","완도군","장성군","장흥군","진도군","함평군","해남군","화순군"];
       const jeonbuk = ["군산시", "김제시", "남원시", "익산시", "전주시", "정읍시", "고창군", "무주군", "부안군", "순창군", "완주군", "임실군", "장수군", "진안군"];
       const jeju = ["서귀포시","제주시","남제주군","북제주군"];
+      const chungnam = ["천안시","공주시", "보령시", "아산시", "서산시", "논산시", "계룡시", "당진시", "금산군", "부여군", "서천군", "청양군", "홍성군", "예산군", "태안군"]
       const chungbuk = ["제천시","청주시","충주시","괴산군","단양군","보은군","영동군","옥천군","음성군","증평군","진천군","청원군"];
 
-      if (e.value == "general01") {
+      if (e.value == "강원") {
         add = gangwon;
-      } else if (e.value == "general02") {
+      } else if (e.value == "경기") {
         add = gyeonggi;
-      } else if (e.value == "general03") {
+      } else if (e.value == "경남") {
         add = gyeongsangnam;
-      } else if (e.value == "general04") {
+      } else if (e.value == "경북") {
         add = gyeongsangbuk;
-      } else if (e.value == "general05") {
+      } else if (e.value == "광주") {
         add = gwangju;
-      } else if (e.value == "general06") {
+      } else if (e.value == "대구") {
         add = daegu;
-      } else if (e.value == "general07") {
+      } else if (e.value == "대전") {
         add = daejeon;
-      } else if (e.value == "general08") {
+      } else if (e.value == "부산") {
         add = busan;
-      } else if (e.value == "general09") {
+      } else if (e.value == "서울") {
         add = seoul;
-      } else if (e.value == "general10") {
+      } else if (e.value == "울산") {
         add = ulsan;
-      } else if (e.value == "general11") {
+      } else if (e.value == "인천") {
         add = incheon;
-      } else if (e.value == "general12") {
+      } else if (e.value == "전남") {
         add = jeonnam;
-      } else if (e.value == "general13") {
+      } else if (e.value == "전북") {
         add = jeonbuk;
-      } else if (e.value == "general14") {
+      } else if (e.value == "제주") {
         add = jeju;
-      } else if (e.value == "general15") {
+      } else if (e.value == "충남") {
         add = chungnam;
-      } else if (e.value == "general16") {
+      } else if (e.value == "충북") {
         add = chungbuk;
       }
 

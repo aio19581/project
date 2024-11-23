@@ -46,7 +46,7 @@ public class SecurityConfig {
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .authorizeHttpRequests((authorize) -> authorize
                         .requestMatchers("/login","/join/**","/popup/**").anonymous() //인증되지 않은 사용자 접근 허용
-                    .requestMatchers("/","/api/jusopopup.html","/map").permitAll() //모든 사용자 접근 허용
+                    .requestMatchers("/","/api/jusopopup.html","/map","/map.html").permitAll() //모든 사용자 접근 허용
                     .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll() //모든 사용자 접근 허용
                     .anyRequest().authenticated()) //인증된 사용자만 접근 허용
                 .formLogin((form) -> form
