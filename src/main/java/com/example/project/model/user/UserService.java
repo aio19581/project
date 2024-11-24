@@ -6,8 +6,9 @@ import com.example.project.entity.Userinfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
-@Repository
+@Service
 public class UserService {
     @Autowired
     private UserRepository repo;
