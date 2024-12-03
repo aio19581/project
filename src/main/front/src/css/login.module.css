@@ -1,0 +1,24 @@
+.body {
+    width : 50vw;
+    max-width: 400px;
+}
+.row {
+    width : 50vw;
+    max-width : 400px;
+    margin-top : 10px;
+}
+.col1 {
+    text-align : left;
+}
+.col2 {
+    text-align : right;
+}
+.cardTitle {
+    margin-top : 1em;
+}
+.alert {
+    color : gray;
+    font-size : 0.8rem;
+    text-align : left;
+    padding : 1em;
+}

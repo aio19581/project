@@ -6,27 +6,29 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
+@CrossOrigin(origins = "http://localhost:3000")
 public class loginController {
     @Autowired
     private UserService service;
 
-    @GetMapping("/")
-    public String mainPage(Model model) {
-        Authentication check = SecurityContextHolder.getContext().getAuthentication();
-        if(check.getPrincipal().equals("anonymousUser")){
-            model.addAttribute("login",false);
-        } else {
-            model.addAttribute("login", true);
-        }
-        return "main";
-    }
+//    @GetMapping("/")
+//    public String mainPage(Model model) {
+//        Authentication check = SecurityContextHolder.getContext().getAuthentication();
+//        if(check.getPrincipal().equals("anonymousUser")){
+//            model.addAttribute("login",false);
+//        } else {
+//            model.addAttribute("login", true);
+//        }
+//        return "main";
+//    }
 
-    @GetMapping("/login")
-    public String loginPage() {
-        return "login";
+    @PostMapping("/loginProcess")
+    public String loginPage(@RequestBody UserBean userBean) {
+        System.out.println(userBean);
+        return "";
     }
 
 }

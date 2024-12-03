@@ -45,12 +45,13 @@ public class SecurityConfig {
         httpSecurity
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .authorizeHttpRequests((authorize) -> authorize
-                        .requestMatchers("/login","/join/**","/popup/**").anonymous() //인증되지 않은 사용자 접근 허용
+                        .requestMatchers("/login/**","/join/**","/popup/**").anonymous() //인증되지 않은 사용자 접근 허용
                     .requestMatchers("/","/api/jusopopup.html","/map","/map.html").permitAll() //모든 사용자 접근 허용
                     .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll() //모든 사용자 접근 허용
                     .anyRequest().authenticated()) //인증된 사용자만 접근 허용
                 .formLogin((form) -> form
                      .loginPage("/login") //로그인 페이지 설정
+                        .loginProcessingUrl("/loginProcess")
                      .defaultSuccessUrl("/", true) //인증 성공 시 루트로 이동
                      .permitAll()) //로그인 프로세스관련 설정
                 .logout((logout) -> logout
@@ -95,8 +96,7 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        // fixme: cors.setAllowedOrigins(Arrays.asList("<YOUR_DOMAIN>")); // 예: "https://your-ios-app.com"
-        configuration.setAllowedOrigins(Arrays.asList("*","http://api.kcisa.kr"));
+        configuration.setAllowedOrigins(Arrays.asList("*","http://api.kcisa.kr", "http://localhost:3000"));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
         configuration.setAllowedHeaders(Arrays.asList("X-Requested-With", "Content-Type", "Authorization", "X-XSRF-token"));
         configuration.setAllowCredentials(false);
