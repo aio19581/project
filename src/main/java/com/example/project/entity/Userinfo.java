@@ -26,16 +26,9 @@ public class Userinfo {
     private String phone;
     private int point;
     private LocalDateTime regdate;
-    private String roles;
+    private String roles; //User, Admin
 
     @OneToMany(mappedBy = "userinfo")
     private List<BookMark> bookMarks;
-
-
-    @PrePersist
-    public void setData(){
-        this.regdate = LocalDateTime.now();
-        this.roles = "USER";
-    }
 
 }

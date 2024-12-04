@@ -1,7 +1,12 @@
 package com.example.project.controller.user;
 
+import com.example.project.dto.UserDto;
+import com.example.project.entity.Userinfo;
+import com.example.project.model.user.UserRepository;
 import com.example.project.model.user.UserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -9,12 +14,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
+@RequiredArgsConstructor
 public class loginController {
     @Autowired
     private UserService service;
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private UserRepository userRepository;
 
-//    @GetMapping("/")
+    //    @GetMapping("/")
 //    public String mainPage(Model model) {
 //        Authentication check = SecurityContextHolder.getContext().getAuthentication();
 //        if(check.getPrincipal().equals("anonymousUser")){
@@ -24,11 +33,13 @@ public class loginController {
 //        }
 //        return "main";
 //    }
-
-    @PostMapping("/loginProcess")
-    public String loginPage(@RequestBody UserBean userBean) {
-        System.out.println(userBean);
-        return "";
+    @GetMapping("/user")
+    public ResponseEntity<Userinfo> getUser(String id){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String userid = authentication.getName();
+        Userinfo user =  userRepository.findByuserid(id);
+        return ResponseEntity.ok(user);
     }
+
 
 }
